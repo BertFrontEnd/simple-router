@@ -1,11 +1,27 @@
 // Components
 
+const AppComponent = {
+  render: () => {
+    return `
+      <header>
+        <h1>JavaScript Router Example</h1>
+      </header>
+      <section id="app"></section>
+      <nav>
+        <a href="#/home">Home</a>
+        <a href="#/page1">Page 1</a>
+        <a href="#/page2">Page 2</a>
+      </nav>
+    `;
+  },
+};
+
 const HomeComponent = {
   render: () => {
     return `
       <section>
         <h1>Home</h1>
-        <p>This is just a test</p>
+        <p>This is just a test of Home</p>
       </section>
     `;
   },
@@ -55,8 +71,10 @@ const routes = [
 // Router
 
 const parseLocation = () => location.hash.slice(1).toLowerCase();
-const findComponentByPath = (path, routes) =>
-  routes.find((r) => r.path.match(new RegExp(`^${path}$`))) || undefined;
+
+const findComponentByPath = (pathRouter, routesRouter) =>
+  routesRouter.find((r) => r.path.match(new RegExp(`^${pathRouter}$`))) ||
+  undefined;
 
 const router = () => {
   // Find the component based on the current path
@@ -68,11 +86,14 @@ const router = () => {
   document.getElementById('app').innerHTML = component.render();
 };
 
-window.addEventListener('hashchange', router);
-window.addEventListener('load', router);
+// Listeners
 
 window.addEventListener('load', () => {
   if (location.hash === '') {
     location.hash = '/home';
   }
+  document.getElementById('body').innerHTML = AppComponent.render();
 });
+
+window.addEventListener('hashchange', router);
+window.addEventListener('load', router);
