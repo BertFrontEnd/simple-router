@@ -48,8 +48,8 @@ const ErrorComponent = {
 
 const routes = [
   { path: '/', component: HomeComponent },
-  { path: 'page1', component: Page1Component },
-  { path: 'page2', component: Page2Component },
+  { path: '/page1', component: Page1Component },
+  { path: '/page2', component: Page2Component },
 ];
 
 // Router
@@ -72,3 +72,6 @@ const router = () => {
   // Render the component in the "app" placeholder
   document.getElementById('app').innerHTML = component.render();
 };
+
+window.addEventListener('hashchange', router);
+window.addEventListener('load', router);
