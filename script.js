@@ -1,6 +1,6 @@
 // Components
 
-const HomeComponents = {
+const HomeComponent = {
   render: () => {
     return `
       <section>
@@ -11,7 +11,7 @@ const HomeComponents = {
   },
 };
 
-const Page1Components = {
+const Page1Component = {
   render: () => {
     return `
       <section>
@@ -22,7 +22,7 @@ const Page1Components = {
   },
 };
 
-const Page2Components = {
+const Page2Component = {
   render: () => {
     return `
       <section>
@@ -33,7 +33,7 @@ const Page2Components = {
   },
 };
 
-const ErrorComponents = {
+const ErrorComponent = {
   render: () => {
     return `
       <section>
@@ -43,3 +43,11 @@ const ErrorComponents = {
     `;
   },
 };
+
+// Routes
+
+const routes = [
+  { path: '/', component: HomeComponent },
+  { path: 'page1', component: Page1Component },
+  { path: 'page2', component: Page2Component },
+];
