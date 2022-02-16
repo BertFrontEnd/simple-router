@@ -54,14 +54,9 @@ const routes = [
 
 // Router
 
-const parseLocation = () => {
-  location.hash.slice(1).toLowerCase() || '/';
-};
-
-const findComponentByPath = (path, routes) => {
-  routes.find((r) => r.path.match(new RegExp(`^\\${path}$`, 'gm'))) ||
-    undefined;
-};
+const parseLocation = () => location.hash.slice(1).toLowerCase() || '/';
+const findComponentByPath = (path, routes) =>
+  routes.find((r) => r.path.match(new RegExp(`^${path}$`))) || undefined;
 
 const router = () => {
   // Find the component based on the current path
