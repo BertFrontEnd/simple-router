@@ -47,14 +47,14 @@ const ErrorComponent = {
 // Routes
 
 const routes = [
-  { path: '/', component: HomeComponent },
+  { path: '/home', component: HomeComponent },
   { path: '/page1', component: Page1Component },
   { path: '/page2', component: Page2Component },
 ];
 
 // Router
 
-const parseLocation = () => location.hash.slice(1).toLowerCase() || '/';
+const parseLocation = () => location.hash.slice(1).toLowerCase();
 const findComponentByPath = (path, routes) =>
   routes.find((r) => r.path.match(new RegExp(`^${path}$`))) || undefined;
 
@@ -70,3 +70,9 @@ const router = () => {
 
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
+
+window.addEventListener('load', () => {
+  if (location.hash === '') {
+    location.hash = '/home';
+  }
+});
